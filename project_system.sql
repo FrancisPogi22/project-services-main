@@ -449,7 +449,7 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`id`, `category_id`, `project_name`, `customers_id`, `description`, `address`, `position`, `image`, `date_start`, `due_date`, `time_created`, `project_num_task`, `task_num_completed`, `project_progress`, `status`) VALUES
-(1, 10, 'First Project', 6, 'Lorem Ipsum', 'Lorem Ipsum', 'Mark Aaron Dinco', 'House.jpg', '2024-05-23', '2024-05-23', '2024-05-23 09:29:56', 3, 3, 100, 0);
+(1, 10, 'First Project', 6, 'Lorem Ipsum', 'Lorem Ipsum', 'Mark Aaron Dinco', 'House.jpg', '2024-05-23', '2024-05-23', '2024-05-23 09:29:56', 3, 3, 100, 3);
 
 -- --------------------------------------------------------
 
@@ -467,6 +467,7 @@ CREATE TABLE `task` (
   `workers` varchar(255) NOT NULL,
   `materials` varchar(255) NOT NULL,
   `equipments` varchar(255) NOT NULL,
+  `cost` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` mediumint(10) NOT NULL COMMENT '0=Pending,1=Preparing,2=On-Progress,3=Completed,4=Cancelled',
   `priority` mediumint(10) NOT NULL COMMENT '0=Low,1=Medium,2=High'

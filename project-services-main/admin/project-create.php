@@ -51,7 +51,7 @@ include('modal/task-modal-add.php');
                                     <input type="text" class="form-control" id="projectNameAdd" name="project_name" placeholder="Project Name" required>
                                 </div>
                             </div>
-
+                            <input type="number" name="total_task" id="total_task" hidden>
                             <div class="col-md-12 mb-3">
                                 <label>Select Category:</label>
                                 <select id="projectCategoryAdd" name="category_id" class="form-select" required>

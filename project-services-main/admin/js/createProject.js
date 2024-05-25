@@ -228,6 +228,7 @@ $("document").ready(function () {
         $('#selected-materials-list .selected-material').remove();
         $('#selected-workers-list .selected-workers').remove();
         $('#addTaskModal').modal('hide');
+        $('#total_task').val(num_task);
     }
 
     createdTasksList();

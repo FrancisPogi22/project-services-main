@@ -12,9 +12,9 @@ include('includes/sidebar.php');
     <div class="content-header">
         <div class="container-fluid">
 
-            <?php 
-        alertMessage();
-        ?>
+            <?php
+            alertMessage();
+            ?>
 
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -47,8 +47,7 @@ include('includes/sidebar.php');
                         <div class="icon">
                             <i class="ion ion-calendar"></i>
                         </div>
-                        <a href="appointment-view.php" class="small-box-footer">More info <i
-                                class="fas fa-arrow-circle-right"></i></a>
+                        <a href="appointment-view.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -63,8 +62,7 @@ include('includes/sidebar.php');
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="project.php" class="small-box-footer">More info <i
-                                class="fas fa-arrow-circle-right"></i></a>
+                        <a href="project.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -79,8 +77,7 @@ include('includes/sidebar.php');
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="employee.php" class="small-box-footer">More info <i
-                                class="fas fa-arrow-circle-right"></i></a>
+                        <a href="employee.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -95,8 +92,7 @@ include('includes/sidebar.php');
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="customers.php" class="small-box-footer">More info <i
-                                class="fas fa-arrow-circle-right"></i></a>
+                        <a href="customers.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -135,20 +131,19 @@ include('includes/sidebar.php');
                         <div class="inner">
                             <h3>
                                 <?php
-                    $todayDate = date('Y-m-d');
-                    $todayOrders = mysqli_query($con, "SELECT * FROM orders WHERE order_date='$todayDate' ");
-                    if ($todayOrders) {
-                        if(mysqli_num_rows($todayOrders) > 0){
-                          $totalCountOrders = mysqli_num_rows($todayOrders);
-                          echo $totalCountOrders;
-                        }else{
-                          echo "0";
-                        }
-                    }else{
+                                $todayDate = date('Y-m-d');
+                                $todayOrders = mysqli_query($con, "SELECT * FROM orders WHERE order_date='$todayDate' ");
+                                if ($todayOrders) {
+                                    if (mysqli_num_rows($todayOrders) > 0) {
+                                        $totalCountOrders = mysqli_num_rows($todayOrders);
+                                        echo $totalCountOrders;
+                                    } else {
+                                        echo "0";
+                                    }
+                                } else {
+                                }
 
-                    }
-
-                  ?>
+                                ?>
                             </h3>
 
                             <p>TODAY ORDERS</p>
@@ -165,7 +160,7 @@ include('includes/sidebar.php');
                 <div class="col-md-12 mb-3">
                     <hr>
 
-                   
+
                     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
                     <style>
                         .progress {
@@ -205,25 +200,25 @@ include('includes/sidebar.php');
     <button id="add-project-btn" class="btn btn-primary">Add Project</button>
 </div> -->
 
-<!-- Bootstrap JS (Optional) -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+                    <!-- Bootstrap JS (Optional) -->
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Counter to keep track of project IDs
-        let projectIdCounter = 2; // Start from 2 since we have one existing project
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            // Counter to keep track of project IDs
+                            let projectIdCounter = 2; // Start from 2 since we have one existing project
 
-        // Function to add a new project row to the table
-        function addProjectRow() {
-            // Increment the project ID counter
-            projectIdCounter++;
+                            // Function to add a new project row to the table
+                            function addProjectRow() {
+                                // Increment the project ID counter
+                                projectIdCounter++;
 
-            // Generate a random completion percentage (for demonstration)
-            const progressPercentage = Math.floor(Math.random() * 100) + 1;
+                                // Generate a random completion percentage (for demonstration)
+                                const progressPercentage = Math.floor(Math.random() * 100) + 1;
 
-            // Create a new table row
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
+                                // Create a new table row
+                                const newRow = document.createElement("tr");
+                                newRow.innerHTML = `
                 <td>${projectIdCounter}</td>
                 <td>Project ${String.fromCharCode(65 + projectIdCounter)}</td>
                 <td>Manager ${projectIdCounter}</td>
@@ -236,16 +231,16 @@ include('includes/sidebar.php');
                 </td>
             `;
 
-            // Append the new row to the table
-            document.getElementById("project-table").getElementsByTagName("tbody")[0].appendChild(newRow);
-        }
+                                // Append the new row to the table
+                                document.getElementById("project-table").getElementsByTagName("tbody")[0].appendChild(newRow);
+                            }
 
-        // Add event listener to the "Add Project" button
-        document.getElementById("add-project-btn").addEventListener("click", function () {
-            addProjectRow();
-        });
-    });
-</script>
+                            // Add event listener to the "Add Project" button
+                            document.getElementById("add-project-btn").addEventListener("click", function() {
+                                addProjectRow();
+                            });
+                        });
+                    </script>
                 </div>
 
 

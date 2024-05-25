@@ -74,8 +74,8 @@
                             foreach ($available_products as $product) {
                         ?>
                                 <div class="form-group">
-                                    <label for="<?= $product['name'] ?>"><?= $product['name'] ?></label>
-                                    <input type="number" id="<?= $product['name'] ?>" name="<?= $product['name'] ?>" class="form-control" min="0">
+                                    <label for="<?= $product['name'] ?>"><?= $product['name'] ?> (Price: <?= $product['price'] ?>)</label>
+                                    <input type="number" id="<?= $product['name'] ?>" name="<?= $product['name'] ?>" class="form-control product-quantity" min="0" data-price="<?= $product['price'] ?>">
                                 </div>
                             <?php
                             }
@@ -85,6 +85,10 @@
                         <?php
                         }
                         ?>
+                        <div class="form-group">
+                            <label>Total Price: </label>
+                            <input type="text" id="totalPrice" name="totalPrice" class="form-control" readonly>
+                        </div>
 
                         <label>Equipment</label>
                         <?php
@@ -153,6 +157,23 @@
 
 <script>
     $(document).ready(function() {
+        const productInputs = document.querySelectorAll('.product-quantity');
+        const totalPriceField = document.getElementById('totalPrice');
+
+        productInputs.forEach(input => {
+            input.addEventListener('input', calculateTotalPrice);
+        });
+
+        function calculateTotalPrice() {
+            let total = 0;
+            productInputs.forEach(input => {
+                const price = parseFloat(input.getAttribute('data-price'));
+                const quantity = parseInt(input.value) || 0;
+                total += price * quantity;
+            });
+            totalPriceField.value = total.toFixed(2);
+        }
+
         $('#saveTaskBtn').click(function(event) {
             event.preventDefault();
 

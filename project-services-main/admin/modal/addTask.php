@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $task_due_date = $_POST['task_due_date'] ?? '';
     $task_priority = $_POST['task_priority'] ?? '';
     $task_status = $_POST['task_status'] ?? '';
+    $totalPrice = $_POST['totalPrice'] ?? '';
 
     $selected_workers = isset($_POST['selected_workers']) ? $_POST['selected_workers'] : array();
     $selected_workers_str = implode(",", $selected_workers);
@@ -62,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selected_equipment = isset($_POST['selected_equipment']) ? $_POST['selected_equipment'] : array();
     $selected_equipment_str = implode(",", $selected_equipment);
 
-    $task_sql = "INSERT INTO task (id, project_id, task_name, description, start_date, workers, materials, equipments, due_date, status, priority)
-                     VALUES ('$current_task_id', '$current_id', '$task_name', '$task_description', '$task_start_date', '$selected_workers_str', '$materials_used_str', '$selected_equipment_str', '$task_due_date', '$task_status', '$task_priority')";
+    $task_sql = "INSERT INTO task (id, project_id, task_name, description, start_date, workers, materials, equipments, due_date, status, priority,cost)
+                     VALUES ('$current_task_id', '$current_id', '$task_name', '$task_description', '$task_start_date', '$selected_workers_str', '$materials_used_str', '$selected_equipment_str', '$task_due_date', '$task_status', '$task_priority', $totalPrice)";
 
     if ($con->query($task_sql) === TRUE) {
         $response = [
