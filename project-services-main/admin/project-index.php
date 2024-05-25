@@ -6,10 +6,16 @@ include('includes/sidebar.php');
 include('../admin/config/dbcon.php');
 
 // Fetch the uploaded project from the database with category names and customer names
-$sql = "SELECT project.*, categories.name AS category_name, customers.name AS customer_name 
-        FROM project 
-        JOIN categories ON project.category_id = categories.id
-        LEFT JOIN customers ON project.customers_id = customers.id";
+$sql = "SELECT
+project.*,
+categories.name AS category_name,
+customers.name AS customer_name
+FROM
+project
+JOIN categories ON project.category_id = categories.id
+LEFT JOIN customers ON project.customers_id = customers.id
+WHERE
+project.status != 4";
 $result = mysqli_query($con, $sql);
 
 ?>
